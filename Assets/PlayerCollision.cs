@@ -32,6 +32,17 @@ public class PlayerCollision : MonoBehaviour
     {
         vidas.text = "Vidas: " + counter.ToString();
 
+        while (col.gameObject.name == "Plane lvl 3")
+        {
+            if (col.gameObject.name == "")
+            {
+
+            } else
+            {
+
+            }
+        }
+
         if (counter > 0)
         {
             /*

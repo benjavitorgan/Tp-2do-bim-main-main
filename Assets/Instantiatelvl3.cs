@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Instantiatelvl3 : MonoBehaviour
 {
+    public Transform spawner;
+    public GameObject cube;
+    GameObject clone;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(ExampleCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update ()
     {
-        Clon();
+
     }
 
-    public void Clon ()
+    IEnumerator ExampleCoroutine ()
     {
-        GameObject clon;
-        clon = Instantiate(gameObject);
-        Destroy(clon, 1);
+        while (true)
+        {
+            clone = Instantiate(cube, spawner.transform.position, spawner.transform.rotation);
+            Destroy(clone, 1/*0.5f*/);
+            yield return new WaitForSeconds(2);
+            
+        }
     }
 }
