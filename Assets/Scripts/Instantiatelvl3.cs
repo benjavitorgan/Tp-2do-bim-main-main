@@ -5,7 +5,7 @@ using UnityEngine;
 public class Instantiatelvl3 : MonoBehaviour
 {
     public Transform spawner;
-    public GameObject cube;
+    public GameObject objeto;
     GameObject clone;
 
     // Start is called before the first frame update
@@ -23,8 +23,8 @@ public class Instantiatelvl3 : MonoBehaviour
     {
         while (true)
         {
-            clone = Instantiate(cube, spawner.transform.position, spawner.transform.rotation);
-            Destroy(clone, 1/*0.5f*/);
+            clone = Instantiate(objeto, spawner.transform.position, spawner.transform.rotation);
+            Destroy(clone, 15/*0.5f*/);
             yield return new WaitForSeconds(2);
             
         }

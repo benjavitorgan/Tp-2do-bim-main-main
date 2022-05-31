@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿susing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,16 +32,17 @@ public class PlayerCollision : MonoBehaviour
     {
         vidas.text = "Vidas: " + counter.ToString();
 
+        /*
         while (col.gameObject.name == "Plane lvl 3")
         {
             if (col.gameObject.name == "")
             {
-
             } else
             {
 
             }
         }
+        */
 
         if (counter > 0)
         {
@@ -57,7 +58,7 @@ public class PlayerCollision : MonoBehaviour
                 nivel.text = "Nivel: 3";
             }*/
 
-            if (col.gameObject.name == "Killer" || col.gameObject.name == "Capsule")
+            if (col.gameObject.tag == "Killer")
             {
                 transform.position = new Vector3(3.07f, 0.5f, -7);
                 counter--;
