@@ -38,7 +38,7 @@ public class Movingbase : MonoBehaviour
 
         }
 
-        if (transform.position.z >= 14.2f)
+        if (transform.position.z >= 14.3f)
         {
             on = true;
             //yield return new WaitForSeconds(3);

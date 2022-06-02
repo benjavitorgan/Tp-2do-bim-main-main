@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     public Text vidas;
     public Text GO;
     public Text nivel;
+    float spawnx, spawny, spawnz;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class PlayerCollision : MonoBehaviour
         counter = 3;
         GO.text = "";
         //nivel.text = "";
+        spawnx = 3.07f;
+        spawny = 0.5f;
+        spawnz = 7f;
     }
 
     // Update is called once per frame
@@ -23,7 +27,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (transform.position.y < 0.1f)
         {
-            transform.position = new Vector3(3.07f, 0.5f, -7);
+            transform.position = new Vector3(spawnx, spawny, spawnz);
             counter--;
         }
     }
@@ -31,18 +35,6 @@ public class PlayerCollision : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         vidas.text = "Vidas: " + counter.ToString();
-
-        /*
-        while (col.gameObject.name == "Plane lvl 3")
-        {
-            if (col.gameObject.name == "")
-            {
-            } else
-            {
-
-            }
-        }
-        */
 
         if (counter > 0)
         {
@@ -58,11 +50,19 @@ public class PlayerCollision : MonoBehaviour
                 nivel.text = "Nivel: 3";
             }*/
 
+            if (col.gameObject.name == "Checkpoint")
+            {
+                spawnx = 3.03f;
+                spawny = 0.59f;
+                spawnz = 21.35f;
+            }
+
             if (col.gameObject.tag == "Killer")
             {
-                transform.position = new Vector3(3.07f, 0.5f, -7);
+                transform.position = new Vector3(spawnx, spawny, spawnz);
                 counter--;
             }
+
         } else
         {
             Destroy(gameObject);

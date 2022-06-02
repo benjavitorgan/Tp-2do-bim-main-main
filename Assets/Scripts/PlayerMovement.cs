@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float RotationSpeed;
     Rigidbody rb;
     public float force;
-    bool hasJump = true;
+    bool hasJump;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground" && gameObject.transform.position.z > 5)
         {
             hasJump = true;
         }
