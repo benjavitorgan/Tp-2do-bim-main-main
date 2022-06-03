@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
+    int Timecounter;
+    float timeToChange;
+    public Text txtCountdown;
     public int counter;
     public Text vidas;
     public Text GO;
@@ -14,17 +17,30 @@ public class PlayerCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Timecounter = 100;
         counter = 3;
         GO.text = "";
         //nivel.text = "";
         spawnx = 3.07f;
         spawny = 0.5f;
-        spawnz = 7f;
+        spawnz = -7f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (timeToChange < Time.time)
+        {
+            Timecounter--;
+            if (Timecounter > 0)
+            {
+                txtCountdown.text = "Tiempo: " + Timecounter.ToString();
+                timeToChange++;
+            } else {
+                counter = 0;
+            }
+        }
+
         if (transform.position.y < 0.1f)
         {
             transform.position = new Vector3(spawnx, spawny, spawnz);

@@ -24,8 +24,8 @@ public class Instantiatelvl3 : MonoBehaviour
         while (true)
         {
             clone = Instantiate(objeto, spawner.transform.position, spawner.transform.rotation);
-            Destroy(clone, 15/*0.5f*/);
-            yield return new WaitForSeconds(1.7f);
+            Destroy(clone, 15);
+            yield return new WaitForSeconds(2f);
             
         }
     }
