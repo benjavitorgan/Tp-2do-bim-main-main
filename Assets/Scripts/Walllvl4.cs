@@ -29,12 +29,12 @@ public class Walllvl4 : MonoBehaviour
             transform.Translate (0, -speed, 0); //Se mueve en -y si "up" es false
         }
 
-        if (transform.position.y > 4) 
+        if (transform.position.y >= 9) 
         {
             up = false;
         }
 
-        if (transform.position.y < 2)
+        if (transform.position.y <= 7)
         {
             up = true;
         }

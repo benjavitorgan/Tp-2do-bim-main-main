@@ -11,11 +11,15 @@ public class PlayerCollision : MonoBehaviour
     public int counter;
     public Text vidas;
     public Text GO;
+    public Text Ganaste;
     public Text nivel;
     float spawnx, spawny, spawnz;
+    public GameObject InicialBase;
+    public GameObject checkpoint;
     public Transform plataforma1;
     public Transform plataforma2;
     public Transform plataforma3;
+    public GameObject camara;
 
     /*
     public GameObject platform1;
@@ -30,9 +34,9 @@ public class PlayerCollision : MonoBehaviour
         counter = 3;
         GO.text = "";
         //nivel.text = "";
-        spawnx = 3.07f;
+        spawnx = InicialBase.transform.position.x;
         spawny = 0.5f;
-        spawnz = -7f;
+        spawnz = InicialBase.transform.position.z;
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class PlayerCollision : MonoBehaviour
                 timeToChange++;
             } else {
                 counter = 0;
+                Timecounter = 0;
             }
         }
 
@@ -76,28 +81,19 @@ public class PlayerCollision : MonoBehaviour
                 nivel.text = "Nivel: 3";
             }*/
 
-            // Nivel 4, el personaje se mueve junto a la base. Creo un if para cada plataforma
-
-            if (col.gameObject.name == "Platforma 1")
-            {
-                gameObject.transform.SetParent (plataforma1);
-            }
-
-            if (col.gameObject.name == "Platforma 2")
-            {
-                gameObject.transform.SetParent (plataforma2);
-            }
-
-            if (col.gameObject.name == "Platforma 3")
-            {
-                gameObject.transform.SetParent (plataforma3);
-            }
+            
 
             if (col.gameObject.name == "Checkpoint")
             {
-                spawnx = 3.03f;
-                spawny = 0.59f;
-                spawnz = 21.35f;
+                spawnx = checkpoint.transform.position.x;
+                spawny = checkpoint.transform.position.y + 0.2f;
+                spawnz = checkpoint.transform.position.z; 
+            }
+
+            if (col.gameObject.name == "Final")
+            {
+                Ganaste.text = "¡GANASTE!";
+                camara.SetActive(true);
             }
 
             if (col.gameObject.tag == "Killer")
@@ -110,6 +106,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Destroy(gameObject);
             GO.text = "¡Game Over!";
+            camara.SetActive(true);
         }
     }
 
