@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -43,10 +44,10 @@ public class PlayerCollision : MonoBehaviour
     void Update()
     {
         if (timeToChange < Time.time)
-        {
-            Timecounter--;
+        {          
             if (Timecounter > 0)
             {
+                Timecounter--;
                 txtCountdown.text = "Tiempo: " + Timecounter.ToString();
                 timeToChange++;
             } else {
@@ -108,6 +109,11 @@ public class PlayerCollision : MonoBehaviour
             GO.text = "¡Game Over!";
             camara.SetActive(true);
         }
+    }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     /*
