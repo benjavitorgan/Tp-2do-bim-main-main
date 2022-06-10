@@ -7,26 +7,12 @@ using UnityEngine.SceneManagement;
 public class PlayerCollision : MonoBehaviour
 {
     int Timecounter;
-    float timeToChange;
+    float timeToChange, spawnx, spawny, spawnz;
     public Text txtCountdown;
     public int counter;
-    public Text vidas;
-    public Text GO;
-    public Text Ganaste;
-    public Text nivel;
-    float spawnx, spawny, spawnz;
-    public GameObject InicialBase;
-    public GameObject checkpoint;
-    public Transform plataforma1;
-    public Transform plataforma2;
-    public Transform plataforma3;
-    public GameObject camara;
-
-    /*
-    public GameObject platform1;
-    public GameObject platform2;
-    public GameObject platform3;
-    */
+    public Text vidas, GO, Ganaste, nivel;
+    public GameObject InicialBase, checkpoint, camara, prefabGanaste, prefabPerdiste, prefabMuerte;
+    public Transform plataforma1, plataforma2, plataforma3;
 
     // Start is called before the first frame update
     void Start()
@@ -93,19 +79,30 @@ public class PlayerCollision : MonoBehaviour
 
             if (col.gameObject.name == "Final")
             {
+                Instantiate(prefabGanaste);
+                Destroy(prefabGanaste, 1.5f);
                 Ganaste.text = "¡GANASTE!";
                 camara.SetActive(true);
+
+                Time.timeScale = 0;
             }
 
             if (col.gameObject.tag == "Killer")
             {
+                
+                Instantiate(prefabMuerte);
+                Destroy(prefabMuerte, 1.5f);
                 transform.position = new Vector3(spawnx, spawny, spawnz);
                 counter--;
             }
 
         } else
         {
+            
+            Instantiate(prefabPerdiste);
+            Destroy(prefabPerdiste, 1.5f);
             Destroy(gameObject);
+            
             GO.text = "¡Game Over!";
             camara.SetActive(true);
         }
