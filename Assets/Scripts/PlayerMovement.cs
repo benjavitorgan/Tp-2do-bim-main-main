@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     public float force;
     bool hasJump;
+    public SoundBehaviour myAM;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * force, ForceMode.Impulse);
             hasJump = false;
+            myAM.Salto();
         }
         if (Input.GetKey(KeyCode.W))
         {
